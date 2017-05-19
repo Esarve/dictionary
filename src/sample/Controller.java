@@ -2,6 +2,7 @@ package sample;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.event.*;
 
@@ -19,6 +20,12 @@ public class Controller {
     private RadioButton e2bMode;
 
     @FXML
+    private TextField input;
+
+    @FXML
+    private TextField output;
+
+    @FXML
     void radioButtonAction(ActionEvent event) {
         if (b2eMode.isSelected()){
             e2bLayout.setVisible(false);
@@ -29,6 +36,13 @@ public class Controller {
             e2bLayout.setVisible(true);
         }
 
+    }
+
+    @FXML
+    void searchAction(ActionEvent event) {
+        String input= this.input.getText().toLowerCase();
+        String output = new Main().findData(input);
+        this.output.setText(output);
     }
 
 }

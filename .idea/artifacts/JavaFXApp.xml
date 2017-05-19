@@ -10,6 +10,7 @@
       <element id="archive" name="JavaFXApp.jar">
         <element id="module-output" name="Dictionary" />
       </element>
+      <element id="file-copy" path="$USER_HOME$/Downloads/sqlite-jdbc-3.18.0.jar" />
     </root>
   </artifact>
 </component>

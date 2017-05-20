@@ -37,24 +37,44 @@ public class Main extends Application {
         }
     }
 
-    public String findData(String input){
+    public String findDataB2E(String input){
         this.initDB();
         System.out.println("Find Data Ran!");
         String sql = "SELECT * FROM `dict_table` WHERE `en_word` = ?";
         try{
             PreparedStatement ps= this.connection.prepareStatement(sql);
             ps.setString(1,input);
+            System.out.println("Inputed word: " + input);
             ResultSet resultSet = ps.executeQuery();
             String output = resultSet.getString("bn_word");
             System.out.println("Data Found!");
-            System.out.println(output);
+            System.out.println("Final output: " + output);
             connection.close();
             return output;
 
         }catch (SQLException e){
             System.err.println(e.getMessage());
         }
-        finally {
+        return null;
+    }
+
+    public String findDataE2B(String input){
+        this.initDB();
+        System.out.println("Find Data Ran!");
+        String sql = "SELECT * FROM `dict_table` WHERE `bn_word` = ?";
+        try{
+            PreparedStatement ps= this.connection.prepareStatement(sql);
+            ps.setString(1,input);
+            System.out.println("input is: "+input);
+            ResultSet resultSet = ps.executeQuery();
+            String output = resultSet.getString("en_word");
+            System.out.println("Data Found!");
+            System.out.println("Final output: " + output);
+            connection.close();
+            return output;
+
+        }catch (SQLException e){
+            System.err.println(e.getMessage());
         }
         return null;
     }

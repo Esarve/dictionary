@@ -4,6 +4,8 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -12,63 +14,104 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="464.0" prefWidth="455.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
-   <children>
-      <GridPane fx:id="b2eLayout" alignment="CENTER" layoutX="59.0" layoutY="82.0" prefHeight="58.0" prefWidth="338.0" visible="false">
-        <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="155.0" minWidth="10.0" prefWidth="136.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="107.0" minWidth="10.0" prefWidth="62.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="138.0" minWidth="10.0" prefWidth="136.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <Label text="Bangla" />
-            <Label text="English" GridPane.columnIndex="2" />
-         </children>
-      </GridPane>
-      <GridPane fx:id="e2bLayout" alignment="CENTER" layoutX="59.0" layoutY="82.0" prefHeight="58.0" prefWidth="338.0">
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="155.0" minWidth="10.0" prefWidth="136.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="107.0" minWidth="10.0" prefWidth="62.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="138.0" minWidth="10.0" prefWidth="136.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         </rowConstraints>
-         <children>
-            <Label text="English" />
-            <Label text="Bangla" GridPane.columnIndex="2" />
-         </children>
-      </GridPane>
-      <VBox alignment="CENTER" layoutX="110.0" layoutY="234.0" prefHeight="178.0" prefWidth="235.0" spacing="10.0" style="-fx-border-color: black; -fx-border-style: dotted;">
-         <padding>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </padding>
-         <children>
-            <Button fx:id="search" mnemonicParsing="false" onAction="#searchAction" prefHeight="50.0" prefWidth="133.0" text="Search" />
-            <RadioButton fx:id="b2eMode" mnemonicParsing="false" onAction="#radioButtonAction" text="Bangla To English Mode">
-               <toggleGroup>
-                  <ToggleGroup fx:id="modegroup" />
-               </toggleGroup>
-            </RadioButton>
-            <RadioButton fx:id="e2bMode" mnemonicParsing="false" onAction="#radioButtonAction" selected="true" text="English to Bangla Mode" toggleGroup="$modegroup" />
-         </children>
-      </VBox>
-      <GridPane layoutX="59.0" layoutY="140.0" prefHeight="30.0" prefWidth="338.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="145.0" minWidth="10.0" prefWidth="145.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="106.0" minWidth="10.0" prefWidth="49.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="146.0" minWidth="10.0" prefWidth="144.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <TextField fx:id="input" />
-            <TextField fx:id="output" GridPane.columnIndex="2" />
-         </children>
-      </GridPane>
-   </children>
-</AnchorPane>
+
+<TabPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <tabs>
+      <Tab closable="false" text="Main">
+         <content>
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="464.0" prefWidth="455.0">
+               <children>
+                  <GridPane fx:id="b2eLayout" alignment="CENTER" layoutX="59.0" layoutY="82.0" prefHeight="58.0" prefWidth="338.0" visible="false">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="155.0" minWidth="10.0" prefWidth="136.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="107.0" minWidth="10.0" prefWidth="62.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="138.0" minWidth="10.0" prefWidth="136.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="Bangla" />
+                        <Label text="English" GridPane.columnIndex="2" />
+                     </children>
+                  </GridPane>
+                  <GridPane fx:id="e2bLayout" alignment="CENTER" layoutX="59.0" layoutY="82.0" prefHeight="58.0" prefWidth="338.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="155.0" minWidth="10.0" prefWidth="136.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="107.0" minWidth="10.0" prefWidth="62.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="138.0" minWidth="10.0" prefWidth="136.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label text="English" />
+                        <Label text="Bangla" GridPane.columnIndex="2" />
+                     </children>
+                  </GridPane>
+                  <VBox alignment="CENTER" layoutX="110.0" layoutY="234.0" prefHeight="178.0" prefWidth="235.0" spacing="10.0" style="-fx-border-color: black; -fx-border-style: dotted;">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                     <children>
+                        <Button fx:id="search" mnemonicParsing="false" onAction="#searchAction" prefHeight="50.0" prefWidth="133.0" text="Search" />
+                        <RadioButton fx:id="b2eMode" mnemonicParsing="false" onAction="#radioButtonAction" text="Bangla To English Mode">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="modegroup" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="e2bMode" mnemonicParsing="false" onAction="#radioButtonAction" selected="true" text="English to Bangla Mode" toggleGroup="$modegroup" />
+                     </children>
+                  </VBox>
+                  <GridPane layoutX="59.0" layoutY="140.0" prefHeight="30.0" prefWidth="338.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="145.0" minWidth="10.0" prefWidth="145.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="106.0" minWidth="10.0" prefWidth="49.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="146.0" minWidth="10.0" prefWidth="144.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <TextField fx:id="input" />
+                        <TextField fx:id="output" GridPane.columnIndex="2" />
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+         </content>
+      </Tab>
+      <Tab closable="false" text="Add New Word">
+         <content>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <TextField fx:id="addWord2" layoutX="126.0" layoutY="152.0" AnchorPane.leftAnchor="126.0" />
+                  <TextField fx:id="addWord1" layoutX="126.0" layoutY="83.0" AnchorPane.leftAnchor="126.0" />
+                  <Button layoutX="301.0" layoutY="83.0" mnemonicParsing="false" text="Clear" />
+                  <Button layoutX="301.0" layoutY="152.0" mnemonicParsing="false" text="Clear" />
+                  <Label fx:id="inputLabelE" layoutX="126.0" layoutY="66.0" text="English" />
+                  <Label fx:id="outputLabelB" layoutX="126.0" layoutY="135.0" text="Bangla" />
+                  <Button layoutX="175.0" layoutY="207.0" mnemonicParsing="false" text="Button" />
+                  <VBox layoutX="122.0" layoutY="267.0" prefHeight="80.0" prefWidth="129.0" spacing="10.0" AnchorPane.leftAnchor="122.0" AnchorPane.rightAnchor="122.0">
+                     <children>
+                        <RadioButton fx:id="e2bAdd" mnemonicParsing="false" onAction="#radioButtonActionAdd" selected="true" text="English To Bangla Mode">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="modegroupAdd" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="b2eAdd" mnemonicParsing="false" onAction="#radioButtonActionAdd" text="Bangla To English Mode" toggleGroup="$modegroupAdd" />
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </VBox>
+                  <Label fx:id="inputLabelB" layoutX="127.0" layoutY="66.0" text="Bangla" visible="false" />
+                  <Label fx:id="outputLabelE" layoutX="126.0" layoutY="135.0" text="English" visible="false" />
+               </children>
+            </AnchorPane>
+         </content>
+      </Tab>
+      <Tab closable="false" text="Delete Word" />
+      <Tab closable="false" text="Modify Word" />
+   </tabs>
+</TabPane>

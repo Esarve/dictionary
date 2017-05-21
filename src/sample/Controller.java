@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
@@ -31,13 +32,35 @@ public class Controller {
     @FXML
     private TextField output;
 
+    @FXML
+    private TextField addWord2;
+
+    @FXML
+    private TextField addWord1;
+
+    @FXML
+    private Label inputLabelE;
+
+    @FXML
+    private Label outputLabelB;
+
+    @FXML
+    private Label inputLabelB;
+
+    @FXML
+    private Label outputLabelE;
+
+    @FXML
+    private RadioButton e2bAdd;
+
+    @FXML
+    private RadioButton b2eAdd;
+
     String inputTXT;
     String outputTXT;
 
-    private void clearTextField(){
-        input.setText("");
-        output.setText("");
-    }
+
+
     @FXML
     void radioButtonAction(ActionEvent event) {
         if (b2eMode.isSelected()){
@@ -69,5 +92,36 @@ public class Controller {
             this.output.setText(outputTXT);
         }
     }
+
+    @FXML
+    void radioButtonActionAdd(ActionEvent event) {
+        if(e2bAdd.isSelected()){
+            activateE2B();
+        }else{
+            activateB2E();
+        }
+    }
+
+    private void clearTextField(){
+        input.setText("");
+        output.setText("");
+    }
+
+    private void activateB2E(){
+        inputLabelB.setVisible(true);
+        inputLabelE.setVisible(false);
+        outputLabelE.setVisible(true);
+        outputLabelB.setVisible(false);
+        System.out.println("activateE2B Ran");
+    }
+
+    private void activateE2B(){
+        inputLabelB.setVisible(false);
+        inputLabelE.setVisible(true);
+        outputLabelE.setVisible(false);
+        outputLabelB.setVisible(true);
+        System.out.println("activateB2E Ran");
+    }
+
 
 }

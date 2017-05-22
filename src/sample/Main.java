@@ -92,4 +92,19 @@ public class Main extends Application {
             System.err.println(e.getMessage());
         }
     }
+
+    public void add2DB_B2E(String input, String output){
+        initDB();
+        String sql = "INSERT INTO `words` (bn_word, en_word) VALUES (?, ?)";
+        try {
+            this.ps=this.connection.prepareStatement(sql);
+            this.ps.setString(1,input);
+            this.ps.setString(2,output);
+            this.ps.execute();
+            this.ps.close();
+            this.connection.close();
+        }catch (SQLException e){
+            System.err.println(e.getMessage());
+        }
+    }
 }

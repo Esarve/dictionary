@@ -107,6 +107,10 @@ public class Controller {
         }
     }
 
+    private void clearInputFields(){
+        addWord1.setText("");
+        addWord2.setText("");
+    }
 
     private void clearTextField(){
         input.setText("");
@@ -144,8 +148,12 @@ public class Controller {
             this.inputTXT=addWord1.getText().toLowerCase();
             this.outputTXT=addWord2.getText().toLowerCase();
             new Main().add2DB_E2B(inputTXT,outputTXT);
+            clearTextField();
         }else if(b2eAdd.isSelected()){
-
+            this.inputTXT=addWord1.getText().toLowerCase();
+            this.outputTXT=addWord2.getText().toLowerCase();
+            new Main().add2DB_B2E(inputTXT,outputTXT);
+            clearTextField();
         }
     }
     }

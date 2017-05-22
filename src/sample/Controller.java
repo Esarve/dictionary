@@ -5,6 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.event.*;
 
@@ -52,13 +53,26 @@ public class Controller {
     private RadioButton b2eAdd;
 
     @FXML
-    private Button addWord;
-
-    @FXML
     private Button clearIn;
 
     @FXML
     private Button clearOut;
+
+    @FXML
+    private TextField inputEditWord;
+
+    @FXML
+    private TextField displayCurrentWord;
+
+    @FXML
+    private TextField inputNewWord;
+
+    @FXML
+    private Button save;
+
+    @FXML
+    private Button reset;
+
 
 
     String inputTXT;
@@ -155,5 +169,10 @@ public class Controller {
             new Main().add2DB_B2E(inputTXT,outputTXT);
             clearTextField();
         }
+    }
+
+    @FXML
+    void dynamicSearchWord(KeyEvent event) {
+
     }
     }

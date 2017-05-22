@@ -11,6 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
@@ -110,7 +111,38 @@
             </AnchorPane>
          </content>
       </Tab>
-      <Tab closable="false" text="Delete Word" />
-      <Tab closable="false" text="Modify Word" />
+      <Tab closable="false" text="Delete Word">
+         <content>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+         </content></Tab>
+      <Tab closable="false" text="Modify Word">
+         <content>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <VBox alignment="CENTER_LEFT" fillWidth="false" layoutX="112.0" layoutY="65.0" prefHeight="200.0" prefWidth="274.0" spacing="20.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="62.0">
+                     <children>
+                        <Label text="Input Your Word" />
+                        <TextField fx:id="inputEditWord" onKeyReleased="#dynamicSearchWord" prefHeight="26.0" prefWidth="211.0" />
+                        <Label layoutX="10.0" layoutY="10.0" text="Current Translation" />
+                        <TextField fx:id="displayCurrentWord" editable="false" prefHeight="26.0" prefWidth="211.0" />
+                        <Label layoutX="10.0" layoutY="52.0" text="New Translation" />
+                        <TextField fx:id="inputNewWord" prefHeight="26.0" prefWidth="211.0" />
+                     </children>
+                     <padding>
+                        <Insets left="15.0" top="15.0" />
+                     </padding>
+                  </VBox>
+                  <HBox alignment="CENTER" layoutX="86.0" layoutY="329.0" prefHeight="39.0" prefWidth="200.0" spacing="30.0">
+                     <children>
+                        <Button fx:id="save" mnemonicParsing="false" text="Save" />
+                        <Button fx:id="reset" mnemonicParsing="false" text="Reset" />
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </AnchorPane>
+         </content></Tab>
    </tabs>
 </TabPane>

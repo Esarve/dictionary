@@ -5,13 +5,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-import javax.sql.StatementEvent;
 import java.sql.*;
 
 public class Main extends Application {
 
     Connection connection = null;
+    PreparedStatement ps = null;
+    ResultSet resultSet = null;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -31,25 +31,25 @@ public class Main extends Application {
         try{
             String url = "jdbc:sqlite:database.db";
             connection = DriverManager.getConnection(url);
-            System.out.println("Connected Successfully!");
+//            System.out.println("Connected Successfully!");
         }catch (SQLException e){
             System.err.println(e.getMessage());
         }
     }
 
     public String findDataB2E(String input){
-        this.initDB();
-        System.out.println("Find Data Ran!");
-        String sql = "SELECT * FROM `dict_table` WHERE `en_word` = ?";
+        initDB();
+//        System.out.println("Find Data Ran!");
+        String sql = "SELECT * FROM `words` WHERE `en_word` = ?";
         try{
-            PreparedStatement ps= this.connection.prepareStatement(sql);
+            this.ps= this.connection.prepareStatement(sql);
             ps.setString(1,input);
-            System.out.println("Inputed word: " + input);
-            ResultSet resultSet = ps.executeQuery();
-            String output = resultSet.getString("bn_word");
-            System.out.println("Data Found!");
-            System.out.println("Final output: " + output);
-            connection.close();
+//            System.out.println("Inputed word: " + input);
+            this.resultSet = this.ps.executeQuery();
+            String output = this.resultSet.getString("bn_word");
+//            System.out.println("Data Found!");
+//            System.out.println("Final output: " + output);
+            this.connection.close();
             return output;
 
         }catch (SQLException e){
@@ -59,23 +59,37 @@ public class Main extends Application {
     }
 
     public String findDataE2B(String input){
-        this.initDB();
-        System.out.println("Find Data Ran!");
-        String sql = "SELECT * FROM `dict_table` WHERE `bn_word` = ?";
+        initDB();
+//        System.out.println("Find Data Ran!");
+        String sql = "SELECT * FROM `words` WHERE `bn_word` = ?";
         try{
-            PreparedStatement ps= this.connection.prepareStatement(sql);
-            ps.setString(1,input);
-            System.out.println("input is: "+input);
-            ResultSet resultSet = ps.executeQuery();
-            String output = resultSet.getString("en_word");
-            System.out.println("Data Found!");
-            System.out.println("Final output: " + output);
-            connection.close();
+            this.ps= this.connection.prepareStatement(sql);
+            this.ps.setString(1,input);
+//            System.out.println("input is: "+input);
+            this.resultSet = this.ps.executeQuery();
+            String output = this.resultSet.getString("en_word");
+//            System.out.println("Data Found!");
+//            System.out.println("Final output: " + output);
+            this.connection.close();
             return output;
 
         }catch (SQLException e){
             System.err.println(e.getMessage());
         }
         return null;
+    }
+
+    public void add2DB_E2B(String input, String output){
+        initDB();
+        String sql = "INSERT INTO `words` (en_word, bn_word) VALUES (?, ?)";
+        try {
+            this.ps=this.connection.prepareStatement(sql);
+            this.ps.setString(1,input);
+            this.ps.setString(2,output);
+            this.ps.execute();
+            this.connection.close();
+        }catch (SQLException e){
+            System.err.println(e.getMessage());
+        }
     }
 }

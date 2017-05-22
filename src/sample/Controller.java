@@ -1,17 +1,12 @@
 package sample;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.event.*;
-import jdk.internal.util.xml.impl.ReaderUTF8;
-import sun.misc.CharacterEncoder;
-import sun.nio.cs.UTF_32;
-import sun.nio.cs.UnicodeEncoder;
-
-import java.util.Locale;
 
 public class Controller {
     @FXML
@@ -55,6 +50,16 @@ public class Controller {
 
     @FXML
     private RadioButton b2eAdd;
+
+    @FXML
+    private Button addWord;
+
+    @FXML
+    private Button clearIn;
+
+    @FXML
+    private Button clearOut;
+
 
     String inputTXT;
     String outputTXT;
@@ -102,6 +107,7 @@ public class Controller {
         }
     }
 
+
     private void clearTextField(){
         input.setText("");
         output.setText("");
@@ -123,5 +129,23 @@ public class Controller {
         System.out.println("activateB2E Ran");
     }
 
+    @FXML
+    void clearButtonAction(ActionEvent event) {
+        if (event.getSource()==clearIn){
+            addWord1.setText("");
+        }else if(event.getSource()==clearOut){
+            addWord2.setText("");
+        }
+    }
 
-}
+    @FXML
+    void addButtonAction(ActionEvent event) {
+        if (e2bAdd.isSelected()){
+            this.inputTXT=addWord1.getText().toLowerCase();
+            this.outputTXT=addWord2.getText().toLowerCase();
+            new Main().add2DB_E2B(inputTXT,outputTXT);
+        }else if(b2eAdd.isSelected()){
+
+        }
+    }
+    }

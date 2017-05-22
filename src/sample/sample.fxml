@@ -14,7 +14,6 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-
 <TabPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <tabs>
       <Tab closable="false" text="Main">
@@ -74,7 +73,7 @@
                     </rowConstraints>
                      <children>
                         <TextField fx:id="input" />
-                        <TextField fx:id="output" GridPane.columnIndex="2" />
+                        <TextField fx:id="output" editable="false" GridPane.columnIndex="2" />
                      </children>
                   </GridPane>
                </children>
@@ -87,11 +86,11 @@
                <children>
                   <TextField fx:id="addWord2" layoutX="126.0" layoutY="152.0" AnchorPane.leftAnchor="126.0" />
                   <TextField fx:id="addWord1" layoutX="126.0" layoutY="83.0" AnchorPane.leftAnchor="126.0" />
-                  <Button layoutX="301.0" layoutY="83.0" mnemonicParsing="false" text="Clear" />
-                  <Button layoutX="301.0" layoutY="152.0" mnemonicParsing="false" text="Clear" />
+                  <Button fx:id="clearIn" layoutX="301.0" layoutY="83.0" mnemonicParsing="false" onAction="#clearButtonAction" text="Clear" />
+                  <Button fx:id="clearOut" layoutX="301.0" layoutY="152.0" mnemonicParsing="false" onAction="#clearButtonAction" text="Clear" />
                   <Label fx:id="inputLabelE" layoutX="126.0" layoutY="66.0" text="English" />
                   <Label fx:id="outputLabelB" layoutX="126.0" layoutY="135.0" text="Bangla" />
-                  <Button layoutX="175.0" layoutY="207.0" mnemonicParsing="false" text="Button" />
+                  <Button fx:id="addWord" layoutX="175.0" layoutY="207.0" mnemonicParsing="false" onAction="#addButtonAction" prefHeight="25.0" prefWidth="57.0" text="Add" />
                   <VBox layoutX="122.0" layoutY="267.0" prefHeight="80.0" prefWidth="129.0" spacing="10.0" AnchorPane.leftAnchor="122.0" AnchorPane.rightAnchor="122.0">
                      <children>
                         <RadioButton fx:id="e2bAdd" mnemonicParsing="false" onAction="#radioButtonActionAdd" selected="true" text="English To Bangla Mode">

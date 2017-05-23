@@ -122,7 +122,7 @@
                   <VBox alignment="CENTER_LEFT" fillWidth="false" layoutX="112.0" layoutY="65.0" prefHeight="200.0" prefWidth="274.0" spacing="20.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="62.0">
                      <children>
                         <Label text="Input Your Word" />
-                        <TextField fx:id="inputEditWord" onKeyReleased="#dynamicSearchWord" prefHeight="26.0" prefWidth="211.0" />
+                        <TextField fx:id="inputEditWord" onAction="#dynamicSearchWord" onKeyReleased="#dynamicSearchWord" prefHeight="26.0" prefWidth="211.0" />
                         <Label layoutX="10.0" layoutY="10.0" text="Current Translation" />
                         <TextField fx:id="displayCurrentWord" editable="false" prefHeight="26.0" prefWidth="211.0" />
                         <Label layoutX="10.0" layoutY="52.0" text="New Translation" />

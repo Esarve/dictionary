@@ -9,6 +9,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.event.*;
 
+import java.util.InputMismatchException;
+
 public class Controller {
     @FXML
     private GridPane b2eLayout;
@@ -75,10 +77,16 @@ public class Controller {
 
 
 
-    String inputTXT;
-    String outputTXT;
+    private String inputTXT;
+    private String outputTXT;
 
-
+    private boolean isBangali(String check){
+        int c = check.codePointAt(0);
+        if(c>=0x0985 && c<=0x09FB){
+            return true;
+        }
+        return false;
+    }
 
     @FXML
     void radioButtonAction(ActionEvent event) {
@@ -97,13 +105,13 @@ public class Controller {
 
     @FXML
     void searchAction(ActionEvent event) {
-        if (e2bMode.isSelected()) {
+        if (!isBangali(input.getText())) {
             System.out.println("Running E2B mode");
             this.inputTXT = this.input.getText().toLowerCase();
             this.outputTXT = new Main().findDataB2E(inputTXT);
             this.output.setText(outputTXT);
         }
-        else if (b2eMode.isSelected()){
+        else {
             System.out.println("Running B2E mode");
             this.inputTXT = this.input.getText();
             System.out.println(inputTXT);
@@ -173,6 +181,14 @@ public class Controller {
 
     @FXML
     void dynamicSearchWord(KeyEvent event) {
-
+        try{
+            this.inputTXT=inputEditWord.getText();
+            this.outputTXT=new Main().findDataE2B(inputTXT);
+            displayCurrentWord.setText(outputTXT);
+        }catch (InputMismatchException e){
+            displayCurrentWord.setText("");
+        }
     }
+
+
     }

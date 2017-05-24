@@ -37,7 +37,7 @@ public class Main extends Application {
         }
     }
 
-    public String findDataB2E(String input){
+    public String findDataE2B(String input){
         initDB();
 //        System.out.println("Find Data Ran!");
         String sql = "SELECT * FROM `words` WHERE `en_word` = ?";
@@ -59,7 +59,7 @@ public class Main extends Application {
         return null;
     }
 
-    public String findDataE2B(String input){
+    public String findDataB2E(String input){
         initDB();
 //        System.out.println("Find Data Ran!");
         String sql = "SELECT * FROM `words` WHERE `bn_word` = ?";

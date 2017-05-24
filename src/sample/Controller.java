@@ -82,14 +82,14 @@ public class Controller {
     // Will be removed most probably
     @FXML
     void searchAction(ActionEvent event) {
-        if (!isBangali(input.getText())) {
-            System.out.println("Running E2B mode");
+        if (isBangali(input.getText())) {
+            System.out.println("Running B2E mode");
             this.inputTXT = this.input.getText().toLowerCase();
             this.outputTXT = new Main().findDataB2E(inputTXT);
             this.output.setText(outputTXT);
         }
         else {
-            System.out.println("Running B2E mode");
+            System.out.println("Running E2B mode");
             this.inputTXT = this.input.getText();
             System.out.println(inputTXT);
             this.outputTXT = new Main().findDataE2B(inputTXT);
@@ -116,13 +116,13 @@ public class Controller {
         try{
             this.inputTXT=inputEditWord.getText();
             if(isBangali(inputTXT)){
-                System.out.println("Running E2B mode");
-                this.outputTXT=new Main().findDataE2B(inputTXT);
+                System.out.println("Running B2E mode");
+                this.outputTXT=new Main().findDataB2E(inputTXT);
                 displayCurrentWord.setText(outputTXT);
 
             }else{
-                System.out.println("Running B2E mode");
-                this.outputTXT=new Main().findDataB2E(inputTXT);
+                System.out.println("Running E2B mode");
+                this.outputTXT=new Main().findDataE2B(inputTXT);
                 displayCurrentWord.setText(outputTXT);
             }
         }catch (Exception e){
@@ -136,6 +136,17 @@ public class Controller {
 
     @FXML
     void addButtonAction(ActionEvent event) {
+        if (isBangali(addWord1.getText())) {
+            System.out.println("Running B2E mode");
+            this.inputTXT=addWord1.getText();
+            this.outputTXT=addWord2.getText().toLowerCase();
+            new Main().add2DB_B2E(inputTXT,outputTXT);
+        }else {
+            System.out.println("Running E2B mode");
+            this.inputTXT=addWord1.getText().toLowerCase();
+            this.outputTXT=addWord2.getText();
+            new Main().add2DB_E2B(inputTXT,outputTXT);;
+        }
     }
 
     @FXML

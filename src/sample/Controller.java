@@ -9,20 +9,18 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.event.*;
 
-import java.util.InputMismatchException;
-
 public class Controller {
     @FXML
-    private GridPane b2eLayout;
+    private GridPane b2eLayout; // Will be removed
 
     @FXML
-    private GridPane e2bLayout;
+    private GridPane e2bLayout; // Will be removed
 
     @FXML
-    private RadioButton b2eMode;
+    private RadioButton b2eMode; // Will be removed
 
     @FXML
-    private RadioButton e2bMode;
+    private RadioButton e2bMode; // Will be removed
 
     @FXML
     private TextField input;
@@ -37,10 +35,10 @@ public class Controller {
     private TextField addWord1;
 
     @FXML
-    private Label inputLabelE;
+    private Label inputLabelE; // Will be removed
 
     @FXML
-    private Label outputLabelB;
+    private Label outputLabelB; // Will be removed
 
     @FXML
     private Label inputLabelB;
@@ -49,10 +47,10 @@ public class Controller {
     private Label outputLabelE;
 
     @FXML
-    private RadioButton e2bAdd;
+    private RadioButton e2bAdd; // Will be removed
 
     @FXML
-    private RadioButton b2eAdd;
+    private RadioButton b2eAdd; // Will be removed
 
     @FXML
     private Button clearIn;
@@ -80,6 +78,8 @@ public class Controller {
     private String inputTXT;
     private String outputTXT;
 
+    // Checks if the word is Bengali or not
+
     private boolean isBangali(String check){
         int c = check.codePointAt(0);
         if(c>=0x0985 && c<=0x09FB){
@@ -88,6 +88,8 @@ public class Controller {
         return false;
     }
 
+    // For radio buttons. Will be removed sooon due to layout changes.
+    // Currently enables / disables panels (E2B / B2E)
     @FXML
     void radioButtonAction(ActionEvent event) {
         if (b2eMode.isSelected()){
@@ -103,6 +105,9 @@ public class Controller {
 
     }
 
+    // This method is for searching the current word
+    // The SEARCH button uses this method
+    // Will be removed most probably
     @FXML
     void searchAction(ActionEvent event) {
         if (!isBangali(input.getText())) {
@@ -120,6 +125,7 @@ public class Controller {
         }
     }
 
+    // For radio buttons. Will be removed sooon
     @FXML
     void radioButtonActionAdd(ActionEvent event) {
         if(e2bAdd.isSelected()){
@@ -129,16 +135,19 @@ public class Controller {
         }
     }
 
+    // For radio buttons. Will be removed sooon
     private void clearInputFields(){
         addWord1.setText("");
         addWord2.setText("");
     }
 
+    // For radio buttons. Will be removed sooon
     private void clearTextField(){
         input.setText("");
         output.setText("");
     }
 
+    // For radio buttons. Will be removed sooon
     private void activateB2E(){
         inputLabelB.setVisible(true);
         inputLabelE.setVisible(false);
@@ -146,6 +155,7 @@ public class Controller {
         outputLabelB.setVisible(false);
         System.out.println("activateE2B Ran");
     }
+
 
     private void activateE2B(){
         inputLabelB.setVisible(false);
@@ -155,6 +165,8 @@ public class Controller {
         System.out.println("activateB2E Ran");
     }
 
+    // This method will clear the text fields in ADD tab
+    // Both clear buttons will use this method
     @FXML
     void clearButtonAction(ActionEvent event) {
         if (event.getSource()==clearIn){
@@ -164,6 +176,8 @@ public class Controller {
         }
     }
 
+    //This method will add new words to the dictionary.
+    // This is the method of ADD button in Add panel
     @FXML
     void addButtonAction(ActionEvent event) {
         if (e2bAdd.isSelected()){
@@ -179,13 +193,23 @@ public class Controller {
         }
     }
 
+    // This method will search for the translation of the word inputted in Modification tab.
+    // It uses the Main's FIND FROM DB "findDataE2b" and "findDataB2E" method
     @FXML
     void dynamicSearchWord(KeyEvent event) {
         try{
             this.inputTXT=inputEditWord.getText();
-            this.outputTXT=new Main().findDataE2B(inputTXT);
-            displayCurrentWord.setText(outputTXT);
-        }catch (InputMismatchException e){
+            if(isBangali(inputTXT)){
+                System.out.println("Running E2B mode");
+                this.outputTXT=new Main().findDataE2B(inputTXT);
+                displayCurrentWord.setText(outputTXT);
+
+            }else{
+                System.out.println("Running B2E mode");
+                this.outputTXT=new Main().findDataB2E(inputTXT);
+                displayCurrentWord.setText(outputTXT);
+            }
+        }catch (Exception e){
             displayCurrentWord.setText("");
         }
     }

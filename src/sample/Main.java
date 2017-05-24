@@ -31,7 +31,7 @@ public class Main extends Application {
         try{
             String url = "jdbc:sqlite:database.db";
             connection = DriverManager.getConnection(url);
-//            System.out.println("Connected Successfully!");
+            System.out.println("Connected Successfully!");
         }catch (SQLException e){
             System.err.println(e.getMessage());
         }
@@ -46,6 +46,7 @@ public class Main extends Application {
             ps.setString(1,input);
 //            System.out.println("Inputed word: " + input);
             this.resultSet = this.ps.executeQuery();
+//            System.out.println("Prepared statement executed!");
             String output = this.resultSet.getString("bn_word");
 //            System.out.println("Data Found!");
 //            System.out.println("Final output: " + output);
@@ -67,6 +68,7 @@ public class Main extends Application {
             this.ps.setString(1,input);
 //            System.out.println("input is: "+input);
             this.resultSet = this.ps.executeQuery();
+//            System.out.println("Prepared statement executed!");
             String output = this.resultSet.getString("en_word");
 //            System.out.println("Data Found!");
 //            System.out.println("Final output: " + output);

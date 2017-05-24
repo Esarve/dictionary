@@ -3,11 +3,17 @@ package sample;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXToggleButton;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.event.*;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 public class Controller {
 
@@ -62,6 +68,16 @@ public class Controller {
 
     @FXML
     private Label title;
+
+    @FXML
+    private ImageView close;
+
+    @FXML
+    private ImageView Minimize;
+
+    @FXML
+    private AnchorPane ap;
+
 
 
     private String inputTXT;
@@ -188,6 +204,16 @@ public class Controller {
         title.setText("Delete");
     }
 
+    @FXML
+    void closeAction(ActionEvent event) {
+        Platform.exit();
+    }
+
+    @FXML
+    void minimizeAction(ActionEvent event) {
+        Stage stage = (Stage) ap.getScene().getWindow();
+        stage.setIconified(true);
+    }
 
 
 

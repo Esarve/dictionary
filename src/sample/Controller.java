@@ -1,78 +1,67 @@
 package sample;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.controls.JFXToggleButton;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.GridPane;
 import javafx.event.*;
+import javafx.scene.layout.VBox;
 
 public class Controller {
-    @FXML
-    private GridPane b2eLayout; // Will be removed
+
 
     @FXML
-    private GridPane e2bLayout; // Will be removed
+    private VBox tPanel;
 
     @FXML
-    private RadioButton b2eMode; // Will be removed
+    private JFXTextField input;
 
     @FXML
-    private RadioButton e2bMode; // Will be removed
+    private JFXTextField output;
 
     @FXML
-    private TextField input;
+    private JFXButton search;
 
     @FXML
-    private TextField output;
+    private VBox addPanel;
 
     @FXML
-    private TextField addWord2;
+    private JFXTextField addWord1;
 
     @FXML
-    private TextField addWord1;
+    private JFXTextField addWord2;
 
     @FXML
-    private Label inputLabelE; // Will be removed
+    private VBox mPanel;
 
     @FXML
-    private Label outputLabelB; // Will be removed
+    private JFXTextField inputEditWord;
 
     @FXML
-    private Label inputLabelB;
+    private JFXTextField displayCurrentWord;
 
     @FXML
-    private Label outputLabelE;
+    private JFXTextField inputNewWord;
 
     @FXML
-    private RadioButton e2bAdd; // Will be removed
+    private JFXButton save;
 
     @FXML
-    private RadioButton b2eAdd; // Will be removed
+    private VBox dPanel;
 
     @FXML
-    private Button clearIn;
+    private JFXTextField inputWord;
 
     @FXML
-    private Button clearOut;
+    private JFXTextField displayWord;
 
     @FXML
-    private TextField inputEditWord;
+    private JFXButton delete;
 
     @FXML
-    private TextField displayCurrentWord;
-
-    @FXML
-    private TextField inputNewWord;
-
-    @FXML
-    private Button save;
-
-    @FXML
-    private Button reset;
-
+    private Label title;
 
 
     private String inputTXT;
@@ -86,23 +75,6 @@ public class Controller {
             return true;
         }
         return false;
-    }
-
-    // For radio buttons. Will be removed sooon due to layout changes.
-    // Currently enables / disables panels (E2B / B2E)
-    @FXML
-    void radioButtonAction(ActionEvent event) {
-        if (b2eMode.isSelected()){
-            e2bLayout.setVisible(false);
-            b2eLayout.setVisible(true);
-            clearTextField();
-        }
-        else{
-            b2eLayout.setVisible(false);
-            e2bLayout.setVisible(true);
-            clearTextField();
-        }
-
     }
 
     // This method is for searching the current word
@@ -126,16 +98,6 @@ public class Controller {
     }
 
     // For radio buttons. Will be removed sooon
-    @FXML
-    void radioButtonActionAdd(ActionEvent event) {
-        if(e2bAdd.isSelected()){
-            activateE2B();
-        }else{
-            activateB2E();
-        }
-    }
-
-    // For radio buttons. Will be removed sooon
     private void clearInputFields(){
         addWord1.setText("");
         addWord2.setText("");
@@ -145,52 +107,6 @@ public class Controller {
     private void clearTextField(){
         input.setText("");
         output.setText("");
-    }
-
-    // For radio buttons. Will be removed sooon
-    private void activateB2E(){
-        inputLabelB.setVisible(true);
-        inputLabelE.setVisible(false);
-        outputLabelE.setVisible(true);
-        outputLabelB.setVisible(false);
-        System.out.println("activateE2B Ran");
-    }
-
-
-    private void activateE2B(){
-        inputLabelB.setVisible(false);
-        inputLabelE.setVisible(true);
-        outputLabelE.setVisible(false);
-        outputLabelB.setVisible(true);
-        System.out.println("activateB2E Ran");
-    }
-
-    // This method will clear the text fields in ADD tab
-    // Both clear buttons will use this method
-    @FXML
-    void clearButtonAction(ActionEvent event) {
-        if (event.getSource()==clearIn){
-            addWord1.setText("");
-        }else if(event.getSource()==clearOut){
-            addWord2.setText("");
-        }
-    }
-
-    //This method will add new words to the dictionary.
-    // This is the method of ADD button in Add panel
-    @FXML
-    void addButtonAction(ActionEvent event) {
-        if (e2bAdd.isSelected()){
-            this.inputTXT=addWord1.getText().toLowerCase();
-            this.outputTXT=addWord2.getText().toLowerCase();
-            new Main().add2DB_E2B(inputTXT,outputTXT);
-            clearTextField();
-        }else if(b2eAdd.isSelected()){
-            this.inputTXT=addWord1.getText().toLowerCase();
-            this.outputTXT=addWord2.getText().toLowerCase();
-            new Main().add2DB_B2E(inputTXT,outputTXT);
-            clearTextField();
-        }
     }
 
     // This method will search for the translation of the word inputted in Modification tab.
@@ -214,5 +130,55 @@ public class Controller {
         }
     }
 
-
+    @FXML
+    void deleteWord(ActionEvent event) {
     }
+
+    @FXML
+    void addButtonAction(ActionEvent event) {
+    }
+
+    @FXML
+    void switchPanelToTrans(ActionEvent event) {
+        tPanel.setVisible(true);
+        addPanel.setVisible(false);
+        mPanel.setVisible(false);
+        dPanel.setVisible(false);
+        System.out.println("T-Panel enabled");
+        title.setText("Translation");
+    }
+    @FXML
+    void switchPanelAdd(ActionEvent event) {
+        tPanel.setVisible(false);
+        addPanel.setVisible(true);
+        mPanel.setVisible(false);
+        dPanel.setVisible(false);
+        System.out.println("A-Panel enabled");
+        title.setText("Add New Word");
+    }
+
+    @FXML
+    void switchPanelMod(ActionEvent event) {
+        tPanel.setVisible(false);
+        addPanel.setVisible(false);
+        mPanel.setVisible(true);
+        dPanel.setVisible(false);
+        System.out.println("M-Panel enabled");
+        title.setText("Modify Word");
+    }
+
+    @FXML
+    void switchPanelDel(ActionEvent event) {
+        tPanel.setVisible(false);
+        addPanel.setVisible(false);
+        mPanel.setVisible(false);
+        dPanel.setVisible(true);
+        System.out.println("D-Panel enabled");
+        title.setText("Delete");
+    }
+
+
+
+
+
+}

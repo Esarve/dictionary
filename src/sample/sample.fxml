@@ -1,148 +1,132 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<TabPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
-   <tabs>
-      <Tab closable="false" text="Main">
-         <content>
-            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="464.0" prefWidth="455.0">
-               <children>
-                  <GridPane fx:id="b2eLayout" alignment="CENTER" layoutX="59.0" layoutY="82.0" prefHeight="58.0" prefWidth="338.0" visible="false">
-                    <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="155.0" minWidth="10.0" prefWidth="136.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="107.0" minWidth="10.0" prefWidth="62.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="138.0" minWidth="10.0" prefWidth="136.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <Label text="Bangla" />
-                        <Label text="English" GridPane.columnIndex="2" />
-                     </children>
-                  </GridPane>
-                  <GridPane fx:id="e2bLayout" alignment="CENTER" layoutX="59.0" layoutY="82.0" prefHeight="58.0" prefWidth="338.0">
-                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="155.0" minWidth="10.0" prefWidth="136.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="107.0" minWidth="10.0" prefWidth="62.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="138.0" minWidth="10.0" prefWidth="136.0" />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                     </rowConstraints>
-                     <children>
-                        <Label text="English" />
-                        <Label text="Bangla" GridPane.columnIndex="2" />
-                     </children>
-                  </GridPane>
-                  <VBox alignment="CENTER" layoutX="110.0" layoutY="234.0" prefHeight="178.0" prefWidth="235.0" spacing="10.0" style="-fx-border-color: black; -fx-border-style: dotted;">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                     <children>
-                        <Button fx:id="search" mnemonicParsing="false" onAction="#searchAction" prefHeight="50.0" prefWidth="133.0" text="Search" />
-                        <RadioButton fx:id="b2eMode" mnemonicParsing="false" onAction="#radioButtonAction" text="Bangla To English Mode">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="modegroup" />
-                           </toggleGroup>
-                        </RadioButton>
-                        <RadioButton fx:id="e2bMode" mnemonicParsing="false" onAction="#radioButtonAction" selected="true" text="English to Bangla Mode" toggleGroup="$modegroup" />
-                     </children>
-                  </VBox>
-                  <GridPane layoutX="59.0" layoutY="140.0" prefHeight="30.0" prefWidth="338.0">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="145.0" minWidth="10.0" prefWidth="145.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="106.0" minWidth="10.0" prefWidth="49.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="146.0" minWidth="10.0" prefWidth="144.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <TextField fx:id="input" />
-                        <TextField fx:id="output" editable="false" GridPane.columnIndex="2" />
-                     </children>
-                  </GridPane>
-               </children>
-            </AnchorPane>
-         </content>
-      </Tab>
-      <Tab closable="false" text="Add New Word">
-         <content>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0">
-               <children>
-                  <TextField fx:id="addWord2" layoutX="126.0" layoutY="152.0" AnchorPane.leftAnchor="126.0" />
-                  <TextField fx:id="addWord1" layoutX="126.0" layoutY="83.0" AnchorPane.leftAnchor="126.0" />
-                  <Button fx:id="clearIn" layoutX="301.0" layoutY="83.0" mnemonicParsing="false" onAction="#clearButtonAction" text="Clear" />
-                  <Button fx:id="clearOut" layoutX="301.0" layoutY="152.0" mnemonicParsing="false" onAction="#clearButtonAction" text="Clear" />
-                  <Label fx:id="inputLabelE" layoutX="126.0" layoutY="66.0" text="English" />
-                  <Label fx:id="outputLabelB" layoutX="126.0" layoutY="135.0" text="Bangla" />
-                  <Button fx:id="addWord" layoutX="175.0" layoutY="207.0" mnemonicParsing="false" onAction="#addButtonAction" prefHeight="25.0" prefWidth="57.0" text="Add" />
-                  <VBox layoutX="122.0" layoutY="267.0" prefHeight="80.0" prefWidth="129.0" spacing="10.0" AnchorPane.leftAnchor="122.0" AnchorPane.rightAnchor="122.0">
-                     <children>
-                        <RadioButton fx:id="e2bAdd" mnemonicParsing="false" onAction="#radioButtonActionAdd" selected="true" text="English To Bangla Mode">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="modegroupAdd" />
-                           </toggleGroup>
-                        </RadioButton>
-                        <RadioButton fx:id="b2eAdd" mnemonicParsing="false" onAction="#radioButtonActionAdd" text="Bangla To English Mode" toggleGroup="$modegroupAdd" />
-                     </children>
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                  </VBox>
-                  <Label fx:id="inputLabelB" layoutX="127.0" layoutY="66.0" text="Bangla" visible="false" />
-                  <Label fx:id="outputLabelE" layoutX="126.0" layoutY="135.0" text="English" visible="false" />
-               </children>
-            </AnchorPane>
-         </content>
-      </Tab>
-      <Tab closable="false" text="Delete Word">
-         <content>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" />
-         </content></Tab>
-      <Tab closable="false" text="Modify Word">
-         <content>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0">
-               <children>
-                  <VBox alignment="CENTER_LEFT" fillWidth="false" layoutX="112.0" layoutY="65.0" prefHeight="200.0" prefWidth="274.0" spacing="20.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="62.0">
-                     <children>
-                        <Label text="Input Your Word" />
-                        <TextField fx:id="inputEditWord" onAction="#dynamicSearchWord" onKeyReleased="#dynamicSearchWord" prefHeight="26.0" prefWidth="211.0" />
-                        <Label layoutX="10.0" layoutY="10.0" text="Current Translation" />
-                        <TextField fx:id="displayCurrentWord" editable="false" prefHeight="26.0" prefWidth="211.0" />
-                        <Label layoutX="10.0" layoutY="52.0" text="New Translation" />
-                        <TextField fx:id="inputNewWord" prefHeight="26.0" prefWidth="211.0" />
-                     </children>
-                     <padding>
-                        <Insets left="15.0" top="15.0" />
-                     </padding>
-                  </VBox>
-                  <HBox alignment="CENTER" layoutX="86.0" layoutY="329.0" prefHeight="39.0" prefWidth="200.0" spacing="30.0">
-                     <children>
-                        <Button fx:id="save" mnemonicParsing="false" text="Save" />
-                        <Button fx:id="reset" mnemonicParsing="false" text="Reset" />
-                     </children>
-                     <padding>
-                        <Insets bottom="10.0" top="10.0" />
-                     </padding>
-                  </HBox>
-               </children>
-            </AnchorPane>
-         </content></Tab>
-   </tabs>
-</TabPane>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="453.0" prefWidth="750.0" style="-fx-background-color: #FAFAFA;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+    <children>
+        <AnchorPane layoutX="-6.0" layoutY="-2.0" prefHeight="453.0" prefWidth="750.0" style="-fx-background-color: #FAFAFA;">
+            <children>
+                <VBox fx:id="tPanel" alignment="CENTER_LEFT" layoutX="87.0" layoutY="96.0" prefHeight="262.0" prefWidth="213.0" spacing="70.0" AnchorPane.bottomAnchor="95.0" AnchorPane.leftAnchor="87.0" AnchorPane.rightAnchor="450.0" AnchorPane.topAnchor="95.0">
+                    <children>
+                        <JFXTextField fx:id="input" prefHeight="25.0" prefWidth="182.0" promptText="Enter Word" unFocusColor="#4d4d4d60" />
+                        <JFXTextField fx:id="output" editable="false" prefHeight="25.0" prefWidth="182.0" promptText="Translation" />
+                        <JFXButton fx:id="search" onAction="#searchAction" prefHeight="39.0" prefWidth="128.0" style="-fx-background-color: #3F51B5;" text="Search" textFill="#fafafa">
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <font>
+                                <Font name="Tahoma Bold" size="12.0" />
+                            </font>
+                        </JFXButton>
+                    </children>
+                    <opaqueInsets>
+                        <Insets left="10.0" top="10.0" />
+                    </opaqueInsets>
+                    <padding>
+                        <Insets left="10.0" />
+                    </padding>
+                </VBox>
+                <VBox fx:id="addPanel" layoutX="87.0" layoutY="111.0" prefHeight="200.0" prefWidth="193.0" spacing="70.0" visible="false" AnchorPane.bottomAnchor="79.0" AnchorPane.leftAnchor="87.0" AnchorPane.rightAnchor="450.0" AnchorPane.topAnchor="111.0">
+                    <children>
+                        <JFXTextField fx:id="addWord1" promptText="Enter New Word" />
+                        <JFXTextField fx:id="addWord2" layoutX="10.0" layoutY="10.0" promptText="Enter New Translation" />
+                        <JFXButton onAction="#addButtonAction" prefHeight="39.0" prefWidth="128.0" style="-fx-background-color: #3F51B5;" text="Add" textFill="#fafafa">
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <font>
+                                <Font name="Tahoma Bold" size="12.0" />
+                            </font>
+                        </JFXButton>
+                    </children>
+                    <opaqueInsets>
+                        <Insets left="10.0" />
+                    </opaqueInsets>
+                    <padding>
+                        <Insets left="10.0" />
+                    </padding>
+                </VBox>
+                <VBox fx:id="mPanel" layoutX="97.0" layoutY="121.0" prefHeight="200.0" prefWidth="193.0" spacing="38.0" visible="false" AnchorPane.bottomAnchor="79.0" AnchorPane.leftAnchor="87.0" AnchorPane.rightAnchor="450.0" AnchorPane.topAnchor="111.0">
+                    <children>
+                        <JFXTextField fx:id="inputEditWord" onKeyReleased="#dynamicSearchWord" promptText="Enter Word" />
+                        <JFXTextField fx:id="displayCurrentWord" promptText="Current Translation" />
+                        <JFXTextField fx:id="inputNewWord" layoutX="10.0" layoutY="10.0" promptText="New Translation" />
+                        <JFXButton fx:id="save" prefHeight="39.0" prefWidth="128.0" style="-fx-background-color: #3F51B5;" text="Modify" textFill="#fafafa">
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <font>
+                                <Font name="Tahoma Bold" size="12.0" />
+                            </font>
+                        </JFXButton>
+                    </children>
+                    <opaqueInsets>
+                        <Insets left="10.0" />
+                    </opaqueInsets>
+                    <padding>
+                        <Insets left="10.0" />
+                    </padding>
+                </VBox>
+                <VBox fx:id="dPanel" layoutX="97.0" layoutY="121.0" prefHeight="200.0" prefWidth="193.0" spacing="70.0" visible="false" AnchorPane.bottomAnchor="79.0" AnchorPane.leftAnchor="87.0" AnchorPane.rightAnchor="450.0" AnchorPane.topAnchor="111.0">
+                    <children>
+                        <JFXTextField fx:id="inputWord" promptText="Enter New Word" />
+                        <JFXTextField fx:id="displayWord" layoutX="10.0" layoutY="10.0" promptText="Enter New Translation" />
+                        <JFXButton fx:id="delete" prefHeight="39.0" prefWidth="128.0" style="-fx-background-color: #3F51B5;" text="Delete" textFill="#fafafa">
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <font>
+                                <Font name="Tahoma Bold" size="12.0" />
+                            </font>
+                        </JFXButton>
+                    </children>
+                    <opaqueInsets>
+                        <Insets left="10.0" />
+                    </opaqueInsets>
+                    <padding>
+                        <Insets left="10.0" />
+                    </padding>
+                </VBox>
+            <Label fx:id="title" layoutX="96.0" layoutY="46.0" style="-fx-font-family: Tahoma; -fx-text-fill: #3F51B5; -fx-font-size: 20;" text="Translation" />
+            </children>
+        </AnchorPane>
+        <Pane layoutX="487.0" prefHeight="465.0" prefWidth="276.0" style="-fx-background-color: #3F51B5;" AnchorPane.topAnchor="0.0">
+            <children>
+                <Label layoutX="14.0" layoutY="14.0" style="-fx-text-fill: #FAFAFA; -fx-font-family: Tahoma; -fx-font-size: 25;" text="Dictionary" />
+                <JFXButton alignment="CENTER_LEFT" layoutX="14.0" layoutY="191.0" onAction="#switchPanelAdd" prefHeight="32.0" prefWidth="140.0" style="-fx-text-fill: #FAFAFA;" text="Add New Word">
+                    <font>
+                        <Font name="Tahoma" size="12.0" />
+                    </font>
+                </JFXButton>
+                <JFXButton alignment="CENTER_LEFT" layoutX="14.0" layoutY="239.0" onAction="#switchPanelMod" prefHeight="32.0" prefWidth="140.0" style="-fx-text-fill: #FAFAFA;" text="Modify Existing Word">
+                    <font>
+                        <Font name="Tahoma" size="12.0" />
+                    </font>
+                </JFXButton>
+                <JFXButton alignment="CENTER_LEFT" layoutX="14.0" layoutY="140.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#switchPanelToTrans" prefHeight="32.0" prefWidth="140.0" text="Translation" textFill="WHITE" wrapText="true">
+                    <font>
+                        <Font name="Tahoma" size="12.0" />
+                    </font>
+                </JFXButton>
+                <JFXButton alignment="CENTER_LEFT" layoutX="14.0" layoutY="289.0" onAction="#switchPanelDel" prefHeight="32.0" prefWidth="140.0" style="-fx-text-fill: #FAFAFA;" text="Delete Word">
+                    <font>
+                        <Font name="Tahoma" size="12.0" />
+                    </font>
+                </JFXButton>
+            </children>
+            <padding>
+                <Insets top="1.0" />
+            </padding>
+            <opaqueInsets>
+                <Insets left="1.0" />
+            </opaqueInsets>
+        </Pane>
+    </children>
+</AnchorPane>

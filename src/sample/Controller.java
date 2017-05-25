@@ -3,6 +3,7 @@ package sample;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXToggleButton;
+import javafx.animation.FadeTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -12,8 +13,10 @@ import javafx.scene.input.KeyEvent;
 import javafx.event.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class Controller {
 
@@ -87,10 +90,7 @@ public class Controller {
 
     private boolean isBangali(String check){
         int c = check.codePointAt(0);
-        if(c>=0x0985 && c<=0x09FB){
-            return true;
-        }
-        return false;
+        return c >= 0x0985 && c <= 0x09FB;
     }
 
     // This method is for searching the current word
@@ -161,7 +161,7 @@ public class Controller {
             System.out.println("Running E2B mode");
             this.inputTXT=addWord1.getText().toLowerCase();
             this.outputTXT=addWord2.getText();
-            new Main().add2DB_E2B(inputTXT,outputTXT);;
+            new Main().add2DB_E2B(inputTXT,outputTXT);
         }
     }
 
@@ -214,8 +214,5 @@ public class Controller {
         Stage stage = (Stage) ap.getScene().getWindow();
         stage.setIconified(true);
     }
-
-
-
 
 }

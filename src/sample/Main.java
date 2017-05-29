@@ -136,4 +136,21 @@ public class Main extends Application {
             System.err.println(e.getMessage());
         }
     }
+
+    public void updateDB_E2B(String input, String word){
+        initDB();
+        String sql = "UPDATE `words` SET `bn_word` = ? Where `en_word` = ?";
+        try{
+            System.out.println("Word: "+input);
+            System.out.println("New Word: "+word);
+            this.ps=this.connection.prepareStatement(sql);
+            this.ps.setString(1,word);
+            this.ps.setString(2,input);
+            this.ps.execute();
+            System.out.println("Added Successfully");
+        }catch (SQLException e){
+            System.err.println(e.getMessage());
+        }
+
+    }
 }

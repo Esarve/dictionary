@@ -60,7 +60,7 @@
                         <JFXTextField fx:id="inputEditWord" onKeyReleased="#dynamicSearchWord" promptText="Enter Word" />
                         <JFXTextField fx:id="displayCurrentWord" editable="false" promptText="Current Translation" />
                         <JFXTextField fx:id="inputNewWord" layoutX="10.0" layoutY="10.0" promptText="New Translation" />
-                        <JFXButton fx:id="save" prefHeight="39.0" prefWidth="128.0" style="-fx-background-color: #3F51B5;" text="Modify" textFill="#fafafa">
+                        <JFXButton fx:id="save" onAction="#modifyWord" prefHeight="39.0" prefWidth="128.0" style="-fx-background-color: #3F51B5;" text="Modify" textFill="#fafafa">
                             <opaqueInsets>
                                 <Insets />
                             </opaqueInsets>

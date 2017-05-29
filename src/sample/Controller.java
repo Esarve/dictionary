@@ -47,9 +47,6 @@ public class Controller {
     private VBox mPanel;
 
     @FXML
-    private JFXTextField inputEditWord;
-
-    @FXML
     private JFXTextField displayCurrentWord;
 
     @FXML
@@ -69,6 +66,10 @@ public class Controller {
 
     @FXML
     private AnchorPane ap;
+
+
+    @FXML
+    private JFXTextField inputEditWord;
 
 
 
@@ -162,6 +163,14 @@ public class Controller {
             new Main().deleteFromDB_E(inputTXT);
         }
 
+    }
+
+    @FXML
+    void modifyWord(ActionEvent event) {
+        this.inputTXT=inputEditWord.getText();
+        System.out.println(inputTXT);
+        this.outputTXT=inputNewWord.getText();
+        new Main().updateDB_E2B(inputTXT,outputTXT);
     }
 
     @FXML

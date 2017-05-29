@@ -31,7 +31,7 @@ public class Main extends Application {
 
     public void initDB(){
         try{
-            String url = "jdbc:sqlite::resource:database.db";
+            String url = "jdbc:sqlite:database.db";
             connection = DriverManager.getConnection(url);
             System.out.println("Connected Successfully!");
         }catch (SQLException e){
@@ -107,6 +107,31 @@ public class Main extends Application {
             this.ps.execute();
             this.ps.close();
             this.connection.close();
+        }catch (SQLException e){
+            System.err.println(e.getMessage());
+        }
+    }
+
+    public void deleteFromDB_E(String input){
+        initDB();
+        String sql = "DELETE FROM `words` WHERE `en_word` = ?";
+        try{
+            this.ps=this.connection.prepareStatement(sql);
+            this.ps.setString(1,input);
+            this.ps.execute();
+            this.connection.close();
+        }catch (SQLException e){
+            System.err.println(e.getMessage());
+        }
+    }
+
+    public void deleteFromDB_B(String input){
+        initDB();
+        String sql = "DELETE FROM `words` WHERE `bn_word` = ?";
+        try{
+            this.ps=this.connection.prepareStatement(sql);
+            this.ps.setString(1,input);
+            this.ps.execute();
         }catch (SQLException e){
             System.err.println(e.getMessage());
         }

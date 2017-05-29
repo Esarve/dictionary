@@ -78,9 +78,9 @@
                 </VBox>
                 <VBox fx:id="dPanel" layoutX="87.0" layoutY="135.0" prefHeight="200.0" prefWidth="193.0" spacing="70.0" visible="false" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="87.0" AnchorPane.rightAnchor="450.0" AnchorPane.topAnchor="135.0">
                     <children>
-                        <JFXTextField fx:id="inputWord" promptText="Enter New Word" />
+                        <JFXTextField fx:id="inputWord" onKeyReleased="#dynamicSearchWordDel" promptText="Enter New Word" />
                         <JFXTextField fx:id="displayWord" editable="false" layoutX="10.0" layoutY="10.0" promptText="Enter New Translation" />
-                        <JFXButton fx:id="delete" prefHeight="39.0" prefWidth="128.0" style="-fx-background-color: #3F51B5;" text="Delete" textFill="#fafafa">
+                        <JFXButton fx:id="delete" onAction="#deleteWord" prefHeight="39.0" prefWidth="128.0" style="-fx-background-color: #3F51B5;" text="Delete" textFill="#fafafa">
                             <opaqueInsets>
                                 <Insets />
                             </opaqueInsets>

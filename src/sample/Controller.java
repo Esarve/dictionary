@@ -35,9 +35,6 @@ public class Controller {
     private JFXTextField output;
 
     @FXML
-    private JFXButton search;
-
-    @FXML
     private VBox addPanel;
 
     @FXML
@@ -59,9 +56,6 @@ public class Controller {
     private JFXTextField inputNewWord;
 
     @FXML
-    private JFXButton save;
-
-    @FXML
     private VBox dPanel;
 
     @FXML
@@ -71,16 +65,7 @@ public class Controller {
     private JFXTextField displayWord;
 
     @FXML
-    private JFXButton delete;
-
-    @FXML
     private Label title;
-
-    @FXML
-    private ImageView close;
-
-    @FXML
-    private ImageView Minimize;
 
     @FXML
     private AnchorPane ap;
@@ -150,7 +135,32 @@ public class Controller {
     }
 
     @FXML
+    void dynamicSearchWordDel(KeyEvent event) {
+        try{
+            this.inputTXT=inputWord.getText();
+            if(isBangali(inputTXT)){
+                System.out.println("Running B2E mode");
+                this.outputTXT=new Main().findDataB2E(inputTXT);
+                displayWord.setText(outputTXT);
+            }else{
+                System.out.println("Running E2B mode");
+                this.outputTXT=new Main().findDataE2B(inputTXT);
+                this.displayWord.setText(outputTXT);
+            }
+        }catch (Exception e){
+            this.displayWord.setText("");
+        }
+    }
+
+    @FXML
     void deleteWord(ActionEvent event) {
+        System.out.println("Delete ran");
+        this.inputTXT=inputWord.getText().toLowerCase();
+        if (isBangali(inputTXT)){
+            new Main().deleteFromDB_B(inputTXT);
+        }else {
+            new Main().deleteFromDB_E(inputTXT);
+        }
 
     }
 

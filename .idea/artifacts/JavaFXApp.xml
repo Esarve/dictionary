@@ -6,7 +6,7 @@
         <option name="appClass" value="sample.Main" />
         <option name="description" value="" />
         <option name="htmlPlaceholderId" value="" />
-        <option name="nativeBundle" value="deb" />
+        <option name="nativeBundle" value="exe" />
         <option name="title" value="Dictionary" />
         <option name="vendor" value="Me" />
         <option name="version" value="1.0" />

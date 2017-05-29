@@ -17,8 +17,14 @@
             <children>
                 <VBox fx:id="tPanel" alignment="CENTER_LEFT" layoutX="87.0" layoutY="119.0" prefHeight="262.0" prefWidth="213.0" spacing="70.0" AnchorPane.bottomAnchor="71.0" AnchorPane.leftAnchor="87.0" AnchorPane.rightAnchor="450.0" AnchorPane.topAnchor="119.0">
                     <children>
-                        <JFXTextField fx:id="input" prefHeight="25.0" prefWidth="182.0" promptText="Enter Word" unFocusColor="#4d4d4d60" />
-                        <JFXTextField fx:id="output" editable="false" prefHeight="25.0" prefWidth="182.0" promptText="Translation" />
+                        <JFXTextField fx:id="input" prefHeight="25.0" prefWidth="182.0" promptText="Enter Word" unFocusColor="#4d4d4d60">
+                     <font>
+                        <Font size="13.0" />
+                     </font></JFXTextField>
+                        <JFXTextField fx:id="output" editable="false" prefHeight="25.0" prefWidth="182.0" promptText="Translation">
+                     <font>
+                        <Font name="Siyam Rupali" size="13.0" />
+                     </font></JFXTextField>
                         <JFXButton fx:id="search" onAction="#searchAction" prefHeight="39.0" prefWidth="128.0" style="-fx-background-color: #3F51B5;" text="Search" textFill="#fafafa">
                             <opaqueInsets>
                                 <Insets />
@@ -37,8 +43,14 @@
                 </VBox>
                 <VBox fx:id="addPanel" layoutX="87.0" layoutY="135.0" prefHeight="200.0" prefWidth="193.0" spacing="70.0" visible="false" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="87.0" AnchorPane.rightAnchor="450.0" AnchorPane.topAnchor="135.0">
                     <children>
-                        <JFXTextField fx:id="addWord1" promptText="Enter New Word" />
-                        <JFXTextField fx:id="addWord2" layoutX="10.0" layoutY="10.0" promptText="Enter New Translation" />
+                        <JFXTextField fx:id="addWord1" promptText="Enter New Word">
+                     <font>
+                        <Font size="13.0" />
+                     </font></JFXTextField>
+                        <JFXTextField fx:id="addWord2" layoutX="10.0" layoutY="10.0" promptText="Enter New Translation">
+                     <font>
+                        <Font size="13.0" />
+                     </font></JFXTextField>
                         <JFXButton onAction="#addButtonAction" prefHeight="39.0" prefWidth="128.0" style="-fx-background-color: #3F51B5;" text="Add" textFill="#fafafa">
                             <opaqueInsets>
                                 <Insets />
@@ -57,9 +69,18 @@
                 </VBox>
                 <VBox fx:id="mPanel" layoutX="87.0" layoutY="135.0" prefHeight="200.0" prefWidth="193.0" spacing="38.0" visible="false" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="87.0" AnchorPane.rightAnchor="450.0" AnchorPane.topAnchor="135.0">
                     <children>
-                        <JFXTextField fx:id="inputEditWord" onKeyReleased="#dynamicSearchWord" promptText="Enter Word" />
-                        <JFXTextField fx:id="displayCurrentWord" editable="false" promptText="Current Translation" />
-                        <JFXTextField fx:id="inputNewWord" layoutX="10.0" layoutY="10.0" promptText="New Translation" />
+                        <JFXTextField fx:id="inputEditWord" onKeyReleased="#dynamicSearchWord" promptText="Enter Word">
+                     <font>
+                        <Font size="13.0" />
+                     </font></JFXTextField>
+                        <JFXTextField fx:id="displayCurrentWord" editable="false" promptText="Current Translation">
+                     <font>
+                        <Font size="13.0" />
+                     </font></JFXTextField>
+                        <JFXTextField fx:id="inputNewWord" layoutX="10.0" layoutY="10.0" promptText="New Translation">
+                     <font>
+                        <Font size="13.0" />
+                     </font></JFXTextField>
                         <JFXButton fx:id="save" onAction="#modifyWord" prefHeight="39.0" prefWidth="128.0" style="-fx-background-color: #3F51B5;" text="Modify" textFill="#fafafa">
                             <opaqueInsets>
                                 <Insets />
@@ -78,8 +99,14 @@
                 </VBox>
                 <VBox fx:id="dPanel" layoutX="87.0" layoutY="135.0" prefHeight="200.0" prefWidth="193.0" spacing="70.0" visible="false" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="87.0" AnchorPane.rightAnchor="450.0" AnchorPane.topAnchor="135.0">
                     <children>
-                        <JFXTextField fx:id="inputWord" onKeyReleased="#dynamicSearchWordDel" promptText="Enter New Word" />
-                        <JFXTextField fx:id="displayWord" editable="false" layoutX="10.0" layoutY="10.0" promptText="Enter New Translation" />
+                        <JFXTextField fx:id="inputWord" onKeyReleased="#dynamicSearchWordDel" promptText="Enter New Word">
+                     <font>
+                        <Font size="13.0" />
+                     </font></JFXTextField>
+                        <JFXTextField fx:id="displayWord" editable="false" layoutX="10.0" layoutY="10.0" promptText="Enter New Translation">
+                     <font>
+                        <Font size="13.0" />
+                     </font></JFXTextField>
                         <JFXButton fx:id="delete" onAction="#deleteWord" prefHeight="39.0" prefWidth="128.0" style="-fx-background-color: #3F51B5;" text="Delete" textFill="#fafafa">
                             <opaqueInsets>
                                 <Insets />
@@ -101,7 +128,7 @@
         </AnchorPane>
         <Pane layoutX="487.0" onMouseClicked="#OnMousePressed" onMouseDragged="#OnMouseDragged" prefHeight="465.0" prefWidth="276.0" style="-fx-background-color: #3F51B5;" AnchorPane.topAnchor="0.0">
             <children>
-            <ImageView fitHeight="194.0" fitWidth="200.0" layoutX="68.0" layoutY="256.0" opacity="0.41" rotate="25.0">
+            <ImageView fitHeight="194.0" fitWidth="200.0" layoutX="68.0" layoutY="256.0" opacity="0.15" rotate="25.0">
                <image>
                   <Image url="@dictionary1600.png" />
                </image>

@@ -6,7 +6,12 @@ import com.jfoenix.controls.JFXToggleButton;
 import javafx.animation.FadeTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
@@ -16,7 +21,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
+
+import java.io.IOException;
 
 public class Controller {
 
@@ -75,6 +83,9 @@ public class Controller {
 
     private String inputTXT;
     private String outputTXT;
+
+    public Controller() throws IOException {
+    }
     // Checks if the word is Bengali or not
 
     private boolean isBangali(String check){
@@ -91,6 +102,9 @@ public class Controller {
             System.out.println("Running B2E mode");
             this.inputTXT = this.input.getText().toLowerCase();
             this.outputTXT = new Main().findDataB2E(inputTXT);
+            if(outputTXT==null){
+                showPopup("WORD NOT FOUND");
+            }
             this.output.setText(outputTXT);
         }
         else {
@@ -98,6 +112,9 @@ public class Controller {
             this.inputTXT = this.input.getText();
             System.out.println(inputTXT);
             this.outputTXT = new Main().findDataE2B(inputTXT);
+            if(outputTXT==null){
+                showPopup("WORD NOT FOUND");
+            }
             this.output.setText(outputTXT);
         }
     }
@@ -143,6 +160,7 @@ public class Controller {
                 System.out.println("Running B2E mode");
                 this.outputTXT=new Main().findDataB2E(inputTXT);
                 displayWord.setText(outputTXT);
+
             }else{
                 System.out.println("Running E2B mode");
                 this.outputTXT=new Main().findDataE2B(inputTXT);
@@ -159,8 +177,10 @@ public class Controller {
         this.inputTXT=inputWord.getText().toLowerCase();
         if (isBangali(inputTXT)){
             new Main().deleteFromDB_B(inputTXT);
+            showPopup("DELETED!!");
         }else {
             new Main().deleteFromDB_E(inputTXT);
+            showPopup("DELETED!");
         }
 
     }
@@ -171,6 +191,10 @@ public class Controller {
         System.out.println(inputTXT);
         this.outputTXT=inputNewWord.getText();
         new Main().updateDB_E2B(inputTXT,outputTXT);
+        inputNewWord.setText("");
+        displayCurrentWord.setText("");
+        inputEditWord.setText("");
+        showPopup("MODIFIED!!");
     }
 
     @FXML
@@ -180,11 +204,13 @@ public class Controller {
             this.inputTXT=addWord1.getText();
             this.outputTXT=addWord2.getText().toLowerCase();
             new Main().add2DB_B2E(inputTXT,outputTXT);
+            showPopup("ADDED!");
         }else {
             System.out.println("Running E2B mode");
             this.inputTXT=addWord1.getText().toLowerCase();
             this.outputTXT=addWord2.getText();
             new Main().add2DB_E2B(inputTXT,outputTXT);
+            showPopup("ADDED!");
         }
     }
 
@@ -250,5 +276,33 @@ public class Controller {
         Stage stage = (Stage) ap.getScene().getWindow();
         stage.setX(event.getScreenX() - xOffset);
         stage.setY(event.getScreenY() - yOffset);
+    }
+
+
+    private void showPopup(String msg){
+        VBox popup = new VBox();
+        popup.setPrefHeight(100);
+        popup.setPrefWidth(250);
+        JFXButton confirm =new JFXButton("OK");
+        confirm.setPrefSize(50,20);
+        confirm.setStyle("-fx-background-color:  #3F51B5; -fx-text-fill: #FAFAFA");
+        Label label = new Label(msg);
+        popup.setSpacing(30);
+        popup.setAlignment(Pos.CENTER);
+        popup.getChildren().add(label);
+        popup.getChildren().add(confirm);
+        confirm.setCancelButton(true);
+        Scene newScene = new Scene(popup);
+        Stage stage = new Stage(StageStyle.DECORATED);
+        stage.setScene(newScene);
+        stage.setResizable(false);
+        stage.show();
+        confirm.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                stage.close();
+            }
+        });
+
     }
 }

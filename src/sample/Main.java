@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -33,7 +34,7 @@ public class Main extends Application {
         try{
             String url = "jdbc:sqlite:database.db";
             connection = DriverManager.getConnection(url);
-            System.out.println("Connected Successfully!");
+//            System.out.println("Connected Successfully!");
         }catch (SQLException e){
             System.err.println(e.getMessage());
         }
@@ -153,4 +154,6 @@ public class Main extends Application {
         }
 
     }
+
+
 }

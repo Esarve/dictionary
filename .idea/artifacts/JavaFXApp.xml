@@ -1,15 +1,26 @@
 <component name="ArtifactManager">
-  <artifact type="javafx" name="JavaFXApp">
+  <artifact type="javafx" build-on-make="true" name="JavaFXApp">
     <output-path>$PROJECT_DIR$/out/artifacts/JavaFXApp</output-path>
     <properties id="javafx-properties">
       <options>
         <option name="appClass" value="sample.Main" />
+        <option name="description" value="" />
+        <option name="htmlPlaceholderId" value="" />
+        <option name="nativeBundle" value="deb" />
+        <option name="title" value="Dictionary" />
+        <option name="vendor" value="Me" />
+        <option name="version" value="1.0" />
       </options>
     </properties>
     <root id="root">
       <element id="archive" name="JavaFXApp.jar">
         <element id="module-output" name="Dictionary" />
+        <element id="file-copy" path="$PROJECT_DIR$/database.db" />
+        <element id="directory" name="META-INF">
+          <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+        </element>
       </element>
+      <element id="file-copy" path="$USER_HOME$/jfoenix.jar" />
       <element id="file-copy" path="$USER_HOME$/Downloads/sqlite-jdbc-3.18.0.jar" />
     </root>
   </artifact>

@@ -20,6 +20,10 @@ import javafx.util.Duration;
 
 public class Controller {
 
+    private double xOffset = 375;
+    private double yOffset = 0;
+
+
 
     @FXML
     private VBox tPanel;
@@ -85,7 +89,6 @@ public class Controller {
 
     private String inputTXT;
     private String outputTXT;
-
     // Checks if the word is Bengali or not
 
     private boolean isBangali(String check){
@@ -148,6 +151,7 @@ public class Controller {
 
     @FXML
     void deleteWord(ActionEvent event) {
+
     }
 
     @FXML
@@ -211,8 +215,21 @@ public class Controller {
 
     @FXML
     void minimizeAction(ActionEvent event) {
+
         Stage stage = (Stage) ap.getScene().getWindow();
         stage.setIconified(true);
     }
 
+    @FXML
+    void OnMousePressed(MouseEvent event) {
+        xOffset = event.getSceneX();
+        yOffset = event.getSceneY();
+    }
+
+    @FXML
+    void OnMouseDragged(MouseEvent event) {
+        Stage stage = (Stage) ap.getScene().getWindow();
+        stage.setX(event.getScreenX() - xOffset);
+        stage.setY(event.getScreenY() - yOffset);
+    }
 }

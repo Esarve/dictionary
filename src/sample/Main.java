@@ -14,13 +14,12 @@ public class Main extends Application {
     Connection connection = null;
     PreparedStatement ps = null;
     ResultSet resultSet = null;
-
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.initStyle(StageStyle.UNDECORATED);
+        Parent scene = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("Dictionary");
-        primaryStage.setScene(new Scene(root));
+        primaryStage.setScene(new Scene(scene));
         primaryStage.setResizable(false);
         primaryStage.show();
     }
@@ -32,7 +31,7 @@ public class Main extends Application {
 
     public void initDB(){
         try{
-            String url = "jdbc:sqlite:database.db";
+            String url = "jdbc:sqlite::resource:database.db";
             connection = DriverManager.getConnection(url);
             System.out.println("Connected Successfully!");
         }catch (SQLException e){

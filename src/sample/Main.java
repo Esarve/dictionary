@@ -32,7 +32,7 @@ public class Main extends Application {
 
     public void initDB(){
         try{
-            String url = "jdbc:sqlite:database.db";
+            String url = "jdbc:sqlite::resource:database.db";
             connection = DriverManager.getConnection(url);
 //            System.out.println("Connected Successfully!");
         }catch (SQLException e){

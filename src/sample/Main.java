@@ -34,7 +34,6 @@ public class Main extends Application {
         try{
             String url = "jdbc:sqlite::resource:database.db";
             connection = DriverManager.getConnection(url);
-//            System.out.println("Connected Successfully!");
         }catch (SQLException e){
             System.err.println(e.getMessage());
         }
@@ -42,17 +41,12 @@ public class Main extends Application {
 
     public String findDataE2B(String input){
         initDB();
-//        System.out.println("Find Data Ran!");
         String sql = "SELECT * FROM `words` WHERE `en_word` = ?";
         try{
             this.ps= this.connection.prepareStatement(sql);
             ps.setString(1,input);
-//            System.out.println("Inputed word: " + input);
             this.resultSet = this.ps.executeQuery();
-//            System.out.println("Prepared statement executed!");
             String output = this.resultSet.getString("bn_word");
-//            System.out.println("Data Found!");
-//            System.out.println("Final output: " + output);
             this.connection.close();
             return output;
 
@@ -64,17 +58,12 @@ public class Main extends Application {
 
     public String findDataB2E(String input){
         initDB();
-//        System.out.println("Find Data Ran!");
         String sql = "SELECT * FROM `words` WHERE `bn_word` = ?";
         try{
             this.ps= this.connection.prepareStatement(sql);
             this.ps.setString(1,input);
-//            System.out.println("input is: "+input);
             this.resultSet = this.ps.executeQuery();
-//            System.out.println("Prepared statement executed!");
             String output = this.resultSet.getString("en_word");
-//            System.out.println("Data Found!");
-//            System.out.println("Final output: " + output);
             this.connection.close();
             return output;
 
